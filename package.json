@@ -1,0 +1,22 @@
+{
+  "name": "product-discount",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+  "dev":"tailwindcss -i priceFinder/static/tw/tailwind-input.css -o priceFinder/static/css/output.css --watch "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Niceiyke/product-discount-finder.git"
+  },
+  "author": "niceiyke",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Niceiyke/product-discount-finder/issues"
+  },
+  "homepage": "https://github.com/Niceiyke/product-discount-finder#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.3.2"
+  }
+}
