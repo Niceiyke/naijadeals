@@ -4,41 +4,23 @@
     <div class="w-2/12 bg-gray-100">
       <ul class="p-8">
         <a class="flex gap-2 items-center p-2">
-          <li class="fa-brands fa-github-square"></li>
-          <li>Phones</li>
+          <i class="fa-regular fa-mobile"></i>
+          <li class="font-bold text-gray-700 hover:text-green-700">Phones</li>
         </a>
 
         <a class="flex gap-2 items-center p-2">
-          <li class="fa-brands fa-github-square"></li>
-          <li>Phones</li>
+          <i class="fa-solid fa-computer"></i>
+          <li class="font-bold text-gray-700 hover:text-green-700">Computers</li>
         </a>
         <a class="flex gap-2 items-center p-2">
-          <li class="fa-brands fa-github-square"></li>
-          <li>Phones</li>
+          <i class="fa-solid fa-tv"></i>
+          <li class="font-bold text-gray-700 hover:text-green-700">Electronics</li>
         </a>
-
         <a class="flex gap-2 items-center p-2">
-          <li class="fa-brands fa-github-square"></li>
-          <li>Phones</li>
+          <i class="fa-regular fa-shirt-long-sleeve"></i>
+          <li class="font-bold text-gray-700 hover:text-green-700">Fashion</li>
         </a>
-        <div class="flex gap-2 items-center p-2">
-          <li class="fa-brands fa-github-square"></li>
-          <li>Phones</li>
-        </div>
 
-        <div class="flex gap-2 items-center p-2">
-          <li class="fa-brands fa-github-square"></li>
-          <li>Phones</li>
-        </div>
-        <div class="flex gap-2 items-center p-2">
-          <li class="fa-brands fa-github-square"></li>
-          <li>Phones</li>
-        </div>
-
-        <div class="flex gap-2 items-center p-2">
-          <li class="fa-brands fa-github-square"></li>
-          <li>Phones</li>
-        </div>
       </ul>
     </div>
     <div class="w-8/12 items-center">
@@ -59,28 +41,8 @@
       />
     </div>
   </div>
-  <div class=" mt-4">
-    <div class="bg-green-800 flex justify-between h-8 rounded-sm">
-      <h1 class="ml-5 text-white">Phone Discounts</h1>
-      <a href="" class="mr-5 text-white">See All</a>
-    </div>
-    <div class="flex flex-wrap gap-4 mt-4 rounded-sm">
-      <div class="w-64 relative border-2 border-green-700">
-        <div class="w-12 bg-red-600 mt-4 absolute right-2 text-center text-white"> 60%</div>
-        <img src="https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/17/4543532/1.jpg?7962" alt="">
-        
-        <div class="p-2">
-          <h1 class="text-gray-700 font-bold">Lorem ipsum dolor, sit amet consectetur Voluptatem natus ratione nihil</h1>
-          <div class="mt-4 border-2 text-gray-700 font-black text-xl border-green-200 text-center "><span class=""># 120,000</span> <span class=" line-through decoration-red-600">#220,000</span></div>
-          <div class="mt-4 border-2 border-green-200 hover:bg-green-700 hover:text-white rounded-sm text-gray-600 text-center  font-black text-xl "><span class="">Store:</span><span class="pl-2">Jumia</span></div>
-        </div>
-      </div>
-      
-    </div>
 
-   
-
-  </div>
+  {% include 'utils/frame1.html' %}
   
 </div>
 {% endblock %}
