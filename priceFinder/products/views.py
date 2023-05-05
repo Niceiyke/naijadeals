@@ -3,11 +3,9 @@ from .models import Product
 
 # Create your views here.
 
-def ListProducts (request):
+def ListProducts (request,id):
 
-    products =Product.objects.all()
-    print(len(products))
-
+    products =Product.objects.filter(category=id)
     context= {
         'products':products
     }
