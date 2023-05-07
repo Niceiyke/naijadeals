@@ -1,0 +1,22 @@
+version: '3'
+services:
+  pricefinder:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./data/:/pricefinder/data/
+    ports:
+      - 8000:8000
+
+  db:
+    image: postgress:14-alpine
+    volumes:
+      - ./data/postgres_data:/var/lib/postgresql/data/
+
+    environment:
+      - POSTGRES_USER=niceiyke
+      - POSTGRES_PASSWORD=pricefinder
+      - POSTGRES_DB=pricefinder
+
+volumes:
+  data:
