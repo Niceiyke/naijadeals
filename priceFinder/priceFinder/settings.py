@@ -90,9 +90,11 @@ WSGI_APPLICATION = 'priceFinder.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "PASSWORD": "mysecretpassword",
+        "NAME": "postgres",
+        "USER": "postgres",
+        "PASSWORD": "postgres",
         "HOST": "localhost",
-        "PORT":  "5432"
+        "PORT": "5432",
     }
 }
 
