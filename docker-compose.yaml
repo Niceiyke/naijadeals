@@ -14,7 +14,7 @@ services:
       - ./data/postgres_data:/var/lib/postgresql/data/
 
     environment:
-      - POSTGRES_USER=niceiyke
+      - POSTGRES_USER=pricefinder
       - POSTGRES_PASSWORD=pricefinder
       - POSTGRES_DB=pricefinder
 
