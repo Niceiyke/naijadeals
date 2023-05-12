@@ -52,7 +52,7 @@ class SavingToDb:
 
     def create_table(self):
 
-        self.cur.execute("""CREATE TABLE IF NOT EXISTS products(
+        self.cur.execute("""CREATE TABLE IF NOT EXISTS produs(
         name TEXT PRIMARY KEY,stock text,category text,store text,image text,url text,discount REAL,original_price REAL,discount_price REAL)""")
 
     def process_item(self,item,spider):
@@ -66,7 +66,7 @@ class SavingToDb:
 class SavingToDbpostgres:
 
     def __init__(self):
-        self.con = psycopg2.connect(database="postgres",user='postgres',password='postgres',host='localhost',port= '5432')
+        self.con = psycopg2.connect(database="postgresec2",user='postgresec2',password='postgresec2',host='3.23.130.169',port= '5432')
         
         self.cur=self.con.cursor()
 
