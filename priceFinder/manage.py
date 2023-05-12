@@ -8,7 +8,7 @@ from priceFinder.settings import base
 def main():
     """Run administrative tasks."""
     if base.DEBUG:
-        os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'priceFinder.settings.local')
+        os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'priceFinder.setting')
     else:
         os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'priceFinder.settings.production')
     try:
