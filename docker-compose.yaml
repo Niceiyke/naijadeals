@@ -9,7 +9,7 @@ services:
       - 8000:8000
     container_name: pricefinder_container
     env_file:
-      - .env
+      - /priceFinder/.env
 
   nginx:
     build: ./nginx
@@ -28,7 +28,7 @@ services:
     depends_on:
       - web
     env_file:
-      - .env
+      - /priceFinder/.env
 
   celery_beat:
     build: .
@@ -37,7 +37,7 @@ services:
     depends_on:
       - web
     env_file:
-      - .env
+      - /priceFinder/.env
 
   
 volumes:
