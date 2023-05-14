@@ -1,25 +1,38 @@
 version: '3'
 services:
-  pricefinder:
+  web:
     build: .
-    command: python manage.py runserver 0.0.0.0:8000
+    command: gunicorn priceFinder.wsgi:application --bind 0.0.0.0:8000
     volumes:
-      - ./data/:/pricefinder/data/
+      - ./static_volume:/pricefinder/staticfiles
     ports:
       - 8000:8000
     container_name: pricefinder_container
+
+  nginx:
+    build: ./nginx
+    ports:
+      - 8000:80
+    depends_on:
+      - web
+    volumes:
+      - ./static_volume:/pricefinder/staticfiles
 
   
   celery_worker:
     build: .
     command: celery -A priceFinder worker -l info
     container_name: celery_Worker_container
+    depends_on:
+      - web
 
   celery_beat:
     build: .
     command: celery -A priceFinder beat -l info
     container_name: celery_beat_container
+    depends_on:
+      - web
 
   
 volumes:
-  data:
+  static_volume:
