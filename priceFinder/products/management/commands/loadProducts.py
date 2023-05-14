@@ -1,15 +1,10 @@
 from django.core.management.base import BaseCommand, CommandParser
 import json
 import os
+from django.db import transaction
 from products.models import Product
 
-file_path='c:/Users/oyomi01/Documents/GitHub/Work_Folder/product-discount-finder/priceFinder/products/management/commands/db'
-
-
-
-
-
-
+file_path='/home/niceiyke/Documents/WORK_FOLDER/product-discount-finder/priceFinder/output'
 
 class Command(BaseCommand):
     help = 'load products'
@@ -24,6 +19,12 @@ class Command(BaseCommand):
                     x=json.load(data)
 
                     for i in x:
-                        Product.objects.create(name=i['name'],discount_price=i['discount_price'],original_price=i['original_price'],image=i['image'],product_url=i['url'],discount_percent=i['dicount_percent'],category=i['category'])
+                        with transaction.atomic():
+                            print(i)
+                            if 'original_price' in i.keys():
+                                Product.objects.update_or_create(name=i['name'],discount_price=i['discount_price'],original_price=i['original_price'],image=i['image'],product_url=i['url'],discount_percent=i['discount_percent'],category=i['category'],stock=i['stock'])
+                            else:
+                                continue
+                           
                         
                     print('done')

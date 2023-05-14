@@ -6,7 +6,7 @@ from celery.schedules import crontab
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 
 # Quick-start development settings - unsuitable for production
@@ -88,13 +88,6 @@ ALLOWED_HOSTS = []
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-}
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
@@ -108,33 +101,10 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.2/howto/static-files/
-
-STATIC_URL = "static/"
-STATICFILES_DIRS = [BASE_DIR / "static"]
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-CELERY_BROKER_URL = "redis://3.145.24.76:6379"
-CELERY_RESULT_BACKEND = "redis://3.145.24.76:6379"
 
-CELERY_BEAT_SCHEDULE = {
-    "scrape": {
-        "task": "scraper.tasks.scrape",
-        "schedule": crontab(minute="*/2"),
-    },
-    "loadproducts": {
-        "task": "products.tasks.loadproducts",
-        "schedule": crontab(minute="*/5"),
-    },
-
-    "deleteproducts": {
-        "task": "products.tasks.remover_no_stock_products",
-        "schedule": crontab(minute="*/7"),
-    },
-}

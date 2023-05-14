@@ -39,8 +39,9 @@ def scrape():
 
     @defer.inlineCallbacks
     def crawl():
-        yield runner.crawl(kongaPhoneSpyder)
         yield runner.crawl(jumiaLaptopSpyder)
+        yield runner.crawl(kongaPhoneSpyder)
+        
         yield runner.crawl(jumiaPhoneSpyder)
         reactor.stop()
 

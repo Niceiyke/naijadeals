@@ -10,16 +10,22 @@ class jumiaPhoneSpyder(scrapy.Spider):
     
     custom_settings= {
           'FEEDS':{
-        'jumiaphone.json':{
-            'format':'json','overwrite': True
+            
+        '/home/niceiyke/Documents/WORK_FOLDER/product-discount-finder/priceFinder/output/jumiaphone.json':{
+            'format':'json',
+            'overwrite': True
         }
+        
     },
 
-    "ITEM_PIPELINES" :{
-        "jumia.pipelines.Remove_Items_withNoDiscount_Pipeline": 100,
-        "jumia.pipelines.Remove_Items_NotinStock_Pipeline": 200,
+   # "ITEM_PIPELINES" :{
+       # "jumia.pipelines.Remove_Items_withNoDiscount_Pipeline": 100,
+       # "jumia.pipelines.Remove_Items_NotinStock_Pipeline": 200,
+        #"jumia.pipelines.SavingToDb": 300,
 
-        }
+
+       # }
+
 
     }
 
@@ -36,7 +42,7 @@ class jumiaPhoneSpyder(scrapy.Spider):
             l.add_css('name','h3.name ::text'),
             l.add_css('discount_price','div.prc ::text'),
             l.add_css('original_price','div.old ::text'),
-            l.add_css('dicount_percent','div.bdg._dsct._sm ::text'),
+            l.add_css('discount_percent','div.bdg._dsct._sm ::text'),
             l.add_css('stock','button.add.btn._md ::text'),
             l.add_value('category','smartphones'),
             l.add_value('store','Jumia'),

@@ -7,16 +7,19 @@ services:
       - ./data/:/pricefinder/data/
     ports:
       - 8000:8000
+    container_name: pricefinder_container
 
-  db:
-    image: postgress:14-alpine
-    volumes:
-      - ./data/postgres_data:/var/lib/postgresql/data/
+  
+  celery_worker:
+    build: .
+    command: celery -A priceFinder worker -l info
+    container_name: celery_Worker_container
 
-    environment:
-      - POSTGRES_USER=pricefinder
-      - POSTGRES_PASSWORD=pricefinder
-      - POSTGRES_DB=pricefinder
+  celery_beat:
+    build: .
+    command: celery -A priceFinder beat -l info
+    container_name: celery_beat_container
 
+  
 volumes:
   data:

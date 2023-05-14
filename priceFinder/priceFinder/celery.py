@@ -1,14 +1,12 @@
 import os 
-from priceFinder.settings import base
-
 from celery import Celery
-
+from priceFinder.settings_file import base
 # Set the default Django settings module for the 'celery' program.
 
 if base.DEBUG:
-        os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'priceFinder.settings.local')
+        os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'priceFinder.settings_file.local')
 else:
-        os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'priceFinder.settings.production')
+        os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'priceFinder.settings_file.production')
 
 app = Celery('priceFinder')
 
@@ -20,3 +18,5 @@ app.config_from_object('django.conf:settings', namespace='CELERY')
 
 # Load task modules from all registered Django apps.
 app.autodiscover_tasks()
+
+

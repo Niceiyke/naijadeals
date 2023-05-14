@@ -13,7 +13,7 @@ SPIDER_MODULES = ["jumia.spiders"]
 NEWSPIDER_MODULE = "jumia.spiders"
 
 # Splash Server Endpoint
-SPLASH_URL = 'http://localhost:8050'
+#SPLASH_URL = 'http://localhost:8050'
 
 
 
@@ -48,23 +48,23 @@ SPLASH_URL = 'http://localhost:8050'
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-DOWNLOADER_MIDDLEWARES = {
+#DOWNLOADER_MIDDLEWARES = {
    #"jumia.middlewares.JumiaDownloaderMiddleware": 543,
-   'jumia.middlewares.CustomMiddleware': 543,
-   'scrapy_splash.SplashCookiesMiddleware': 723,
-    'scrapy_splash.SplashMiddleware': 725,
-    'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': 810,
-}
+   #'jumia.middlewares.CustomMiddleware': 543,
+   #'scrapy_splash.SplashCookiesMiddleware': 723,
+  #  'scrapy_splash.SplashMiddleware': 725,
+ #   'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': 810,
+#}
 
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
-SPIDER_MIDDLEWARES = {
-    'scrapy_splash.SplashDeduplicateArgsMiddleware': 100,
+#SPIDER_MIDDLEWARES = {
+ #   'scrapy_splash.SplashDeduplicateArgsMiddleware': 100,
     #"jumia.middlewares.JumiaSpiderMiddleware": 543,
-}
+#}
 
 # Define the Splash DupeFilter
-DUPEFILTER_CLASS = 'scrapy_splash.SplashAwareDupeFilter'
+#DUPEFILTER_CLASS = 'scrapy_splash.SplashAwareDupeFilter'
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
@@ -77,15 +77,18 @@ DUPEFILTER_CLASS = 'scrapy_splash.SplashAwareDupeFilter'
 
 ITEM_PIPELINES ={
     "jumia.pipelines.Remove_Items_withNoDiscount_Pipeline": 100,
-    #"jumia.pipelines.Remove_Items_NotinStock_Pipeline": 200,
+  #  "jumia.pipelines.Remove_Items_NotinStock_Pipeline": 200,
+   # "jumia.pipelines.SavingToDb": 300,
 
-        }
+       }
 
 FEEDS ={
     'products.json':{
         'format':'json','overwrite': True
     }
 }
+
+
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html

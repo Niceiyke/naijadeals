@@ -1,4 +1,3 @@
-import os
 from scraper.jumia.jumia.spiders.jumiaslaptops import jumiaLaptopSpyder
 from scraper.jumia.jumia.spiders.jumiasphones import jumiaPhoneSpyder
 from scraper.jumia.jumia.spiders.kongaphones import kongaPhoneSpyder
@@ -10,7 +9,7 @@ from scrapy.crawler import CrawlerRunner
 from scrapy.utils.log import configure_logging
 from celery import shared_task
 
-@shared_task()
+@shared_task
 def scrape():
     settings={
             'BOT_NAME': 'web_page_crawler',
@@ -22,6 +21,10 @@ def scrape():
                 'scrapy_splash.SplashMiddleware': 725,
                 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': 810,
             },
+
+                
+
+
             'SPIDER_MIDDLEWARES': {
                 'scrapy_splash.SplashDeduplicateArgsMiddleware': 100,
             },
@@ -30,7 +33,6 @@ def scrape():
             'format':'json','overwrite': True
         }
     },
-
             'DUPEFILTER_CLASS': 'scrapy_splash.SplashAwareDupeFilter',
             'HTTPCACHE_STORAGE': 'scrapy_splash.SplashAwareFSCacheStorage'
         }
@@ -39,18 +41,17 @@ def scrape():
 
     @defer.inlineCallbacks
     def crawl():
-        yield runner.crawl(kongaPhoneSpyder)
-        yield runner.crawl(jumiaLaptopSpyder)
+        yield runner.crawl(jumiaLaptopSpyder)    
         yield runner.crawl(jumiaPhoneSpyder)
-        reactor.stop()
-
+        
     crawl()
     reactor.run() # the script will block here until the last crawl call is finished
-
-
-if __name__ =='__main__':
-    print('started')
+       
+if __name__ == '__main__':
     scrape()
-    print('end')
+    reactor.stop()
+
+
+
 
 

@@ -45,7 +45,7 @@ class Remove_Items_withNoDiscount_Pipeline:
 class SavingToDb:
 
     def __init__(self):
-        self.con =sqlite3.connect('scrapy.db')
+        self.con =sqlite3.connect('priceFinder/scraper/scrapy.db')
 
         self.cur =self.con.cursor()
         self.create_table()
