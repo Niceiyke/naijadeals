@@ -1,7 +1,6 @@
 venv
 *.pyc
 node_modules
-.env
 scrapyd
 db.sqlite3
 celerybeat-schedule.db
