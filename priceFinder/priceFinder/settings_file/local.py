@@ -24,12 +24,12 @@ CELERY_BEAT_SCHEDULE = {
     },
     "loadproducts": {
         "task": "products.tasks.loadproducts",
-        "schedule": crontab(minute="*/2"),
+        "schedule": crontab(minute="*/27"),
     },
 
     "deleteproducts": {
         "task": "products.tasks.remover_no_stock_products",
-        "schedule": crontab(minute="*/25"),
+        "schedule": crontab(minute="*/29"),
     },
 }
 
@@ -40,5 +40,3 @@ CELERY_BEAT_SCHEDULE = {
 
 STATIC_URL = "static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]
-
-
