@@ -21,5 +21,25 @@ services:
     volumes:
       - ./static_volume:/pricefinder/staticfiles
 
+
+  celery_worker:
+    build: .
+    command: celery -A priceFinder worker -l info
+    container_name: celery_Worker_container
+    depends_on:
+      - web
+    env_file:
+      - variable.env
+
+  celery_beat:
+    build: .
+    command: celery -A priceFinder beat -l info
+    container_name: celery_beat_container
+    depends_on:
+      - web
+    env_file:
+      - variable.env
+
+
 volumes:
   static_volume:
