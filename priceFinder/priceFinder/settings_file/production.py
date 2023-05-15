@@ -43,5 +43,5 @@ CELERY_BEAT_SCHEDULE = {
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "static/"
-STATIC_ROOT = [BASE_DIR / "staticfiles"]
-STATICFILES_DIRS = 'product-discount-finder/priceFinder/staticfiles'
+STATIC_ROOT = 'product-discount-finder/priceFinder/staticfiles'
+STATICFILES_DIRS = [BASE_DIR / "static"]
