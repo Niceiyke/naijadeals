@@ -12,14 +12,5 @@ services:
     env_file:
       - variable.env
 
-  nginx:
-    build: ./nginx
-    ports:
-      - 8001:80
-    depends_on:
-      - web
-    volumes:
-      - ./static_volume:/pricefinder/staticfiles
-
 volumes:
   static_volume:
