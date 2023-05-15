@@ -4,14 +4,14 @@ import os
 from django.db import transaction
 from products.models import Product
 
-file_path='/home/niceiyke/Documents/WORK_FOLDER/product-discount-finder/priceFinder/output'
+file_path='/djangoapp/product-discount-finder/priceFinder/output'
 
 class Command(BaseCommand):
     help = 'load products'
 
     def add_arguments(self, parser: CommandParser) -> None:
         return super().add_arguments(parser)
-    
+
     def handle(self, *args, **options):
             for file in os.listdir(file_path):
                 print(file)
@@ -25,6 +25,6 @@ class Command(BaseCommand):
                                 Product.objects.update_or_create(name=i['name'],discount_price=i['discount_price'],original_price=i['original_price'],image=i['image'],product_url=i['url'],discount_percent=i['discount_percent'],category=i['category'],stock=i['stock'])
                             else:
                                 continue
-                           
-                        
+
+
                     print('done')
