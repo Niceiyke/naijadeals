@@ -6,7 +6,7 @@ services:
     volumes:
       - ./static_volume:/pricefinder/staticfiles
     port:
-    - 8000:8000
+      - 8000:8000
     container_name: pricefinder_container
     env_file:
       - variable.env
