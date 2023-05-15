@@ -3,7 +3,7 @@ services:
   web:
     build: .
     command:
-      sh -c "python manage.py migrate && python manage.py collectstatic && gunicorn priceFinder.wsgi:application --bind 0.0.0.0:8000"
+      sh -c "gunicorn priceFinder.wsgi:application --bind 0.0.0.0:8000"
     volumes:
       - ./static_volume:/djangoapp/product-discount-finder/priceFinder/staticfiles/
     expose:
