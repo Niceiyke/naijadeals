@@ -2,11 +2,13 @@ version: '3'
 services:
   web:
     build: .
+    command: python manage.py makemigrations
+    command: python manage.py migrate
     command: gunicorn priceFinder.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - ./static_volume:/pricefinder/staticfiles
-    ports:
-      - 8000:8000
+    expose:
+    - 8000
     container_name: pricefinder_container
     env_file:
       - variable.env
