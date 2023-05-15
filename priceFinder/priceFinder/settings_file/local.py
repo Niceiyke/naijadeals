@@ -17,6 +17,7 @@ DATABASES = {
 CELERY_BROKER_URL = "redis://localhost:6379"
 CELERY_RESULT_BACKEND = "redis://localhost:6379"
 
+"""
 CELERY_BEAT_SCHEDULE = {
     "scrape": {
         "task": "scraper.tasks.scrape",
@@ -32,6 +33,7 @@ CELERY_BEAT_SCHEDULE = {
         "schedule": crontab(minute="*/29"),
     },
 }
+"""
 
 
 
