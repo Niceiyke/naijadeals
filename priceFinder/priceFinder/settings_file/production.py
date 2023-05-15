@@ -22,16 +22,16 @@ CELERY_RESULT_BACKEND = "redis://3.145.24.76:6379"
 CELERY_BEAT_SCHEDULE = {
     "scrape": {
         "task": "scraper.tasks.scrape",
-        "schedule": crontab(minute="*/2"),
+        "schedule": crontab(minute="*/20"),
     },
     "loadproducts": {
         "task": "products.tasks.loadproducts",
-        "schedule": crontab(minute="*/5"),
+        "schedule": crontab(minute="*/25"),
     },
 
     "deleteproducts": {
         "task": "products.tasks.remover_no_stock_products",
-        "schedule": crontab(minute="*/7"),
+        "schedule": crontab(minute="*/27"),
     },
 }
 
