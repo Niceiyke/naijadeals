@@ -11,8 +11,8 @@ class jumiaLaptopSpyder(scrapy.Spider):
 
     custom_settings = {
         "FEEDS": {
-            
-            "/home/niceiyke/Documents/WORK_FOLDER/product-discount-finder/priceFinder/output/jumialaptop.json": {
+
+            "/djangoapp/output/jumialaptop.json": {
                 "format": "json",
                 "overwrite": True,
             }

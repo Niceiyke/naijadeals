@@ -4,7 +4,7 @@ import os
 from django.db import transaction
 from products.models import Product
 
-file_path='/djangoapp/product-discount-finder/priceFinder/output'
+file_path='/djangoapp/output/'
 
 class Command(BaseCommand):
     help = 'load products'

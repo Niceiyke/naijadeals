@@ -9,7 +9,7 @@ class jumiaFashionSpyder(scrapy.Spider):
 
     custom_settings= {
           'FEEDS':{
-        'jumiafashion.json':{
+        '/djangoapp/output/jumiafashion.json':{
             'format':'json','overwrite': True
         }
     },
@@ -23,13 +23,13 @@ class jumiaFashionSpyder(scrapy.Spider):
     }
 
     def parse(self, response):
-        
+
         products =response.css('article.c-prd')
 
         for product in products:
-              
-            l= ItemLoader(item=JumiaItem(),selector=product) 
-            l.add_css('url','a.core ::attr(href)')           
+
+            l= ItemLoader(item=JumiaItem(),selector=product)
+            l.add_css('url','a.core ::attr(href)')
             l.add_css('name','h3.name ::text'),
             l.add_css('discount_price','div.prc ::text'),
             l.add_css('original_price','div.old ::text'),
@@ -40,8 +40,8 @@ class jumiaFashionSpyder(scrapy.Spider):
             l.add_css('image','img.img ::attr(data-src)'),
 
             yield l.load_item()
-            
-            
+
+
         next_page= response.css('a.pg::attr(href)').getall()[-2]
         print(next_page)
 
@@ -50,9 +50,9 @@ class jumiaFashionSpyder(scrapy.Spider):
 
 
     def product_detail(self,response):
-            
-            
-            l= ItemLoader(item=JumiaItem(),selector=response)            
+
+
+            l= ItemLoader(item=JumiaItem(),selector=response)
             l.add_css('name','h1.-pbxs'),
             l.add_css('discount_price','span.-b.-ltr.-tal.-fs24'),
             l.add_css('original_price','span.-tal.-gy5.-lthr.-fs16'),
@@ -62,5 +62,3 @@ class jumiaFashionSpyder(scrapy.Spider):
             l.add_css('image','img.-fw.-fh ::attr(data-src)'),
 
             yield l.load_item()
-            
-        
