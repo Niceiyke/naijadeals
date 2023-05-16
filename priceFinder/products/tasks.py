@@ -6,7 +6,6 @@ import json
 import os
 
 
-file_path='/home/niceiyke/Documents/WORK_FOLDER/product-discount-finder/priceFinder/output'
 
 @shared_task
 def loadproducts():

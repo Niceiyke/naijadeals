@@ -1,6 +1,10 @@
+
+
+
+
+
 from scraper.jumia.jumia.spiders.jumiaslaptops import jumiaLaptopSpyder
 from scraper.jumia.jumia.spiders.jumiasphones import jumiaPhoneSpyder
-from scraper.jumia.jumia.spiders.kongaphones import kongaPhoneSpyder
 from twisted.internet import reactor, defer
 from scrapy.crawler import CrawlerRunner
 from scrapy.utils.log import configure_logging
@@ -8,6 +12,8 @@ from twisted.internet import reactor, defer
 from scrapy.crawler import CrawlerRunner
 from scrapy.utils.log import configure_logging
 from celery import shared_task
+
+
 
 @shared_task
 def scrape():
@@ -21,18 +27,17 @@ def scrape():
                 'scrapy_splash.SplashMiddleware': 725,
                 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': 810,
             },
-
-                
-
-
             'SPIDER_MIDDLEWARES': {
                 'scrapy_splash.SplashDeduplicateArgsMiddleware': 100,
             },
-            'FEEDS':{
-        'konga.json':{
-            'format':'json','overwrite': True
+        "FEEDS" : {
+        "s3://scrapy-outputfiles/scrapy/%(name)s_%(time)s.json": {
+        "format": "json",
         }
     },
+
+    "AWS_ACCESS_KEY_ID" :'AKIAZPO36HGBPFNCGKZE',
+    "AWS_SECRET_ACCESS_KEY": '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',
             'DUPEFILTER_CLASS': 'scrapy_splash.SplashAwareDupeFilter',
             'HTTPCACHE_STORAGE': 'scrapy_splash.SplashAwareFSCacheStorage'
         }

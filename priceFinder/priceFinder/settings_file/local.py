@@ -14,14 +14,14 @@ DATABASES = {
 }
 
 
-CELERY_BROKER_URL = "redis://localhost:6379"
-CELERY_RESULT_BACKEND = "redis://localhost:6379"
+CELERY_BROKER_URL = "redis://3.145.24.76:6379"
+CELERY_RESULT_BACKEND = "redis://3.145.24.76:6379"
 
-"""
+
 CELERY_BEAT_SCHEDULE = {
     "scrape": {
         "task": "scraper.tasks.scrape",
-        "schedule": crontab(minute="*/20"),
+        "schedule": crontab(minute="*/2"),
     },
     "loadproducts": {
         "task": "products.tasks.loadproducts",
@@ -33,7 +33,7 @@ CELERY_BEAT_SCHEDULE = {
         "schedule": crontab(minute="*/29"),
     },
 }
-"""
+
 
 
 
