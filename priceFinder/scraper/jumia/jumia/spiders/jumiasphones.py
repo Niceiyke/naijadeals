@@ -10,14 +10,6 @@ class jumiaPhoneSpyder(scrapy.Spider):
         "https://www.jumia.com.ng/mlp-stay-connected-deals/ios-phones/?rating=3-5&seller_score=4-5#catalog-listing",
     ]
 
-    custom_settings = {
-        "FEEDS": {
-             'data/%(name)s/%(name)s_%(time)s.json': {
-                "format": "jsonlines",
-                "overwrite": True,
-            }
-        },
-    }
 
     def parse(self, response):
         products = response.css("article.c-prd")

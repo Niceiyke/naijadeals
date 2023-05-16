@@ -25,6 +25,14 @@ def scrape():
             'SPIDER_MIDDLEWARES': {
                 'scrapy_splash.SplashDeduplicateArgsMiddleware': 100,
             },
+
+            "FEEDS": {
+                'data/%(name)s/%(name)s_%(time)s.json': {
+                    "format": "json",
+                    "overwrite": True,
+                }
+            },  
+
             'DUPEFILTER_CLASS': 'scrapy_splash.SplashAwareDupeFilter',
             'HTTPCACHE_STORAGE': 'scrapy_splash.SplashAwareFSCacheStorage'
         }
