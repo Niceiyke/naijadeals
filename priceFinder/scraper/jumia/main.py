@@ -27,7 +27,7 @@ def scrapy():
                 'scrapy_splash.SplashDeduplicateArgsMiddleware': 100,
             },
         "FEEDS" : {
-        "./scrapy_data/%(name)s_%(time)s.json": {
+        "./priceFinder/scrapy_data/%(name)s_%(time)s.json": {
         "format": "json",
         }
     },
