@@ -26,12 +26,7 @@ def scrape():
                 'scrapy_splash.SplashDeduplicateArgsMiddleware': 100,
             },
 
-            "FEEDS": {
-                'data/%(name)s/%(name)s_%(time)s.json': {
-                    "format": "json",
-                    "overwrite": True,
-                }
-            },  
+            'FEED_URI': 'file:///data/%(name)s/%(name)s.json', 
 
             'DUPEFILTER_CLASS': 'scrapy_splash.SplashAwareDupeFilter',
             'HTTPCACHE_STORAGE': 'scrapy_splash.SplashAwareFSCacheStorage'
