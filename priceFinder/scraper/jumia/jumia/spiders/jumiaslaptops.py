@@ -21,6 +21,8 @@ class jumiaLaptopSpyder(scrapy.Spider):
         },
     }
 
+    FEED_URI="s3://scrapy-outputfiles/jumia/laptops.json"
+
     def parse(self, response):
         products = response.css("article.c-prd")
 
