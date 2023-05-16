@@ -8,19 +8,16 @@ class jumiaFashionSpyder(scrapy.Spider):
     start_urls =['https://www.jumia.com.ng/mlp-fashion-deals/category-fashion-by-jumia/?tag=CP_MT131&rating=4-5&seller_score=4-5#catalog-listing']
 
     custom_settings= {
-          'FEEDS':{
-        '/djangoapp/output/jumiafashion.json':{
-            'format':'json','overwrite': True
+          'FEEDS':{     
+    "s3://scrapy-playbook/%(name)s/%(name)s_%(time)s.jsonl": {
+    "format": "jsonlines",
+    'overwrite': True,
         }
     },
-
-            "ITEM_PIPELINES" :{
-                "jumia.pipelines.Remove_Items_withNoDiscount_Pipeline": 100,
-                "jumia.pipelines.Remove_Items_NotinStock_Pipeline": 200,
-
-                }
-
+  
     }
+    AWS_ACCESS_KEY_ID = 'YOUR_AWS_ACCESS_KEY_ID',
+    AWS_SECRET_ACCESS_KEY = 'YOUR_AWS_SECRET_ACCESS_KEY',
 
     def parse(self, response):
 

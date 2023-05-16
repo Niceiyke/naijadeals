@@ -25,7 +25,7 @@ CELERY_RESULT_BACKEND = "redis://3.145.24.76:6379"
 CELERY_BEAT_SCHEDULE = {
     "scrape": {
         "task": "scraper.tasks.scrape",
-        "schedule": crontab(minute="*/20"),
+        "schedule": crontab(minute="*/2"),
     },
     "loadproducts": {
         "task": "products.tasks.loadproducts",
@@ -45,5 +45,5 @@ CELERY_BEAT_SCHEDULE = {
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "static/"
-STATIC_ROOT = 'product-discount-finder/priceFinder/staticfiles/'
+STATIC_ROOT = '/staticfiles/'
 STATICFILES_DIRS = [BASE_DIR / "static"]
