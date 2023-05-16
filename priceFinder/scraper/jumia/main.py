@@ -27,14 +27,10 @@ def scrapy():
                 'scrapy_splash.SplashDeduplicateArgsMiddleware': 100,
             },
         "FEEDS" : {
-        "s3://scrapy-outputfiles/scrapy/%(name)s_%(time)s.json": {
+        "./scrapy_data/%(name)s_%(time)s.json": {
         "format": "json",
         }
     },
-
-    "AWS_ACCESS_KEY_ID" :'AKIAZPO36HGBPFNCGKZE',
-    "AWS_SECRET_ACCESS_KEY": '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',
-
 
 
             'DUPEFILTER_CLASS': 'scrapy_splash.SplashAwareDupeFilter',

@@ -4,7 +4,7 @@ import os
 from django.db import transaction
 from products.models import Product
 
-file_path='/djangoapp/output/'
+file_path='/djangoapp/scrapy_data/'
 
 class Command(BaseCommand):
     help = 'load products'
