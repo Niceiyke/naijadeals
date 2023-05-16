@@ -12,7 +12,7 @@ class jumiaPhoneSpyder(scrapy.Spider):
 
     custom_settings = {
         "FEEDS": {
-            " 'data/%(name)s/%(name)s_%(time)s.json': {
+             'data/%(name)s/%(name)s_%(time)s.json': {
                 "format": "jsonlines",
                 "overwrite": True,
             }
