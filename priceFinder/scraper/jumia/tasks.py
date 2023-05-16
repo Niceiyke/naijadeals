@@ -25,12 +25,6 @@ def scrape():
             'SPIDER_MIDDLEWARES': {
                 'scrapy_splash.SplashDeduplicateArgsMiddleware': 100,
             },
-            'FEEDS':{
-        'konga.json':{
-            'format':'json','overwrite': True
-        }
-    },
-
             'DUPEFILTER_CLASS': 'scrapy_splash.SplashAwareDupeFilter',
             'HTTPCACHE_STORAGE': 'scrapy_splash.SplashAwareFSCacheStorage'
         }
@@ -41,7 +35,7 @@ def scrape():
     def crawl():
         yield runner.crawl(jumiaLaptopSpyder)
         yield runner.crawl(kongaPhoneSpyder)
-        
+
         yield runner.crawl(jumiaPhoneSpyder)
         reactor.stop()
 
@@ -51,5 +45,3 @@ def scrape():
 
 if __name__ =='__main__':
     scrape()
-
-

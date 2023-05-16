@@ -9,19 +9,14 @@ class jumiaLaptopSpyder(scrapy.Spider):
         "https://www.jumia.com.ng/mlp-working-from-anywhere/laptops/?rating=4-5&seller_score=4-5#catalog-listing",
     ]
 
-    AWS_ACCESS_KEY_ID = ("AKIAZPO36HGBBLTMJ5KF",)
-    AWS_SECRET_ACCESS_KEY = ("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",)
-
-    custom_settings = {
-        "FEEDS": {
-            " s3://scrapy-outputfiles/jumia/%(name)s/%(name)s_%(time)s.jsonl": {
-                "format": "jsonlines",
-                "overwrite": True,
-            }
-        },
-    }
-
-    FEED_URI="s3://scrapy-outputfiles/jumia/laptops.json"
+        custom_settings = {
+            "FEEDS": {
+                " 'data/%(name)s/%(name)s_%(time)s.json': {
+                    "format": "json",
+                    "overwrite": True,
+                }
+            },
+        }
 
     def parse(self, response):
         products = response.css("article.c-prd")

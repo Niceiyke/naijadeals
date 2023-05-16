@@ -12,16 +12,13 @@ class jumiaPhoneSpyder(scrapy.Spider):
 
     custom_settings = {
         "FEEDS": {
-            " s3://scrapy-outputfiles/jumia/%(name)s/%(name)s_%(time)s.jsonl": {
+            " 'data/%(name)s/%(name)s_%(time)s.json': {
                 "format": "jsonlines",
                 "overwrite": True,
             }
         },
     }
-    AWS_ACCESS_KEY_ID = ("AKIAZPO36HGBBLTMJ5KF",)
-    AWS_SECRET_ACCESS_KEY = ("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",)
 
-    FEED_URI="s3://scrapy-outputfiles/jumia/phones.json"
     def parse(self, response):
         products = response.css("article.c-prd")
 
