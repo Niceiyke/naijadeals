@@ -5,3 +5,5 @@ package.json
 tailwind.config.json
 scrapyd
 *.sqlite3
+scrapyd
+.env

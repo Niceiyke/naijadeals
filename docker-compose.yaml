@@ -1,9 +1,8 @@
-version: '3'
+version: "3"
 services:
   web:
     build: .
-    command:
-      sh -c "gunicorn priceFinder.wsgi:application --bind 0.0.0.0:8000"
+    command: sh -c "gunicorn priceFinder.wsgi:application --bind 0.0.0.0:8000"
     volumes:
       - ./static_volume:/djangoapp/staticfiles/
     expose:
@@ -13,33 +12,34 @@ services:
       - variable.env
 
   nginx:
-      build: ./nginx
-      ports:
-        - 8001:80
-      depends_on:
-        - web
-      volumes:
-        - ./static_volume:/djangoapp/staticfiles/
+    build: ./nginx
+    ports:
+      - 8001:80
+    depends_on:
+      - web
+    volumes:
+      - ./static_volume:/djangoapp/staticfiles/
+      - .scrapy_volume:/djangoapp/scrapy_data
 
   celery_worker:
-      build: .
-      command: celery -A priceFinder worker -l info
-      container_name: celery_Worker_container
-      volumes:
-        - .scrapy_volume:/djangoapp/scraper/jumia/data/
-      depends_on:
-        - web
-      env_file:
-        - variable.env
+    build: .
+    command: celery -A priceFinder worker -l info --concurrency=2 --without-gossip --pool=solo
+    container_name: celery_Worker_container
+    volumes:
+      - .scrapy_volume:/djangoapp/scrapy_data
+    depends_on:
+      - web
+    env_file:
+      - variable.env
 
   celery_beat:
-      build: .
-      command: celery -A priceFinder beat -l info
-      container_name: celery_beat_container
-      depends_on:
-        - web
-      env_file:
-        - variable.env
+    build: .
+    command: celery -A priceFinder beat -l info
+    container_name: celery_beat_container
+    depends_on:
+      - web
+    env_file:
+      - variable.env
 
 volumes:
   static_volume:

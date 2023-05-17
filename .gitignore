@@ -4,3 +4,4 @@ node_modules
 scrapyd
 db.sqlite3
 celerybeat-schedule.db
+.env

@@ -33,7 +33,7 @@ INSTALLED_APPS = [
     "products",
     "scraper",
     #   External APPs
-    "fontawesomefree",
+
 ]
 
 MIDDLEWARE = [

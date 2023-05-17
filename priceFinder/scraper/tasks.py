@@ -31,8 +31,10 @@ def scrape():
                 'scrapy_splash.SplashDeduplicateArgsMiddleware': 100,
             },
         "FEEDS" : {
-        "./scrapy_data/%(name)s_%(time)s.json": {
+        "./scrapy_data/%(name)s.json": {
         "format": "json",
+        'overwrite': True
+        
         }
     },
 
