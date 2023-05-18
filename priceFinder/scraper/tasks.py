@@ -42,13 +42,13 @@ def scrape():
     @defer.inlineCallbacks
     def crawl():
         yield runner.crawl(jumiaLaptopSpyder)    
-        yield runner.crawl(jumiaPhoneSpyder)
         reactor.stop()
         
     crawl()
     reactor.run() # the script will block here until the last crawl call is finished
 
 scrape()
+
 
     
 
