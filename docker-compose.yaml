@@ -42,20 +42,6 @@ services:
     env_file:
       - variable.env
 
-  flower:
-    image: mher/flower
-    container_name: flower_container
-    command: celery flower
-    restart: always
-    depends_on:
-      - celery_worker
-    environment:
-     - CELERY_BROKER_URL="amqp://admin@3.145.24.76:5672/"
-     - FLOWER_PORT=8888
-    ports:
-      - 8888:8888 
-    volumes:
-      - ./flower_data:/data
 
 volumes:
   static_volume:
