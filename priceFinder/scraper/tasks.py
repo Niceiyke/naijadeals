@@ -1,8 +1,3 @@
-
-
-
-
-
 from scraper.jumia.jumia.spiders.jumiaslaptops import jumiaLaptopSpyder
 from scraper.jumia.jumia.spiders.jumiasphones import jumiaPhoneSpyder
 from twisted.internet import reactor, defer
@@ -49,14 +44,12 @@ def scrape():
         yield runner.crawl(jumiaLaptopSpyder)    
         yield runner.crawl(jumiaPhoneSpyder)
         reactor.stop()
-        print('reactor stopped')
         
     crawl()
     reactor.run() # the script will block here until the last crawl call is finished
-       
-if __name__ == '__main__':
-    scrape()
-    print('finished')
+
+scrape()
+
     
 
 
