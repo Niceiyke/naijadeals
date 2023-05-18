@@ -48,13 +48,16 @@ def scrape():
     def crawl():
         yield runner.crawl(jumiaLaptopSpyder)    
         yield runner.crawl(jumiaPhoneSpyder)
+        reactor.stop()
+        print('reactor stopped')
         
     crawl()
     reactor.run() # the script will block here until the last crawl call is finished
        
 if __name__ == '__main__':
     scrape()
-    reactor.stop()
+    print('finished')
+    
 
 
 
