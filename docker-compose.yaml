@@ -51,7 +51,7 @@ services:
      - FLOWER_PORT=8888
     ports:
       - 8888:8888 
-    voulumes:
+    volumes:
       - ./flower_data:/data
 
 volumes:
