@@ -19,7 +19,7 @@ services:
       - web
     volumes:
       - ./static_volume:/djangoapp/staticfiles/
-      - .scrapy_volume:/djangoapp/scrapy_data
+      - ./scrapy_volume:/djangoapp/scrapy_data
 
   celery_worker:
     build: .
@@ -31,6 +31,7 @@ services:
       - web
     env_file:
       - variable.env
+    restart: always
 
   celery_beat:
     build: .
@@ -41,6 +42,19 @@ services:
     env_file:
       - variable.env
 
+  flower:
+    image: mher/flower
+    container_name: flower_container
+    command: celery flower --persisten=True
+    environment:
+     - CELERY_BROKER_URL=http://3.145.24.76:6379
+     - FLOWER_PORT=8888
+    ports:
+    - 8888:8888 
+    voulumes:
+      - ./flower_data:/data
+
 volumes:
   static_volume:
   scrapy_volume:
+  flower_data:
