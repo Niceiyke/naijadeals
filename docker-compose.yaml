@@ -50,7 +50,7 @@ services:
      - CELERY_BROKER_URL=http://3.145.24.76:6379
      - FLOWER_PORT=8888
     ports:
-    - 8888:8888 
+      - 8888:8888 
     voulumes:
       - ./flower_data:/data
 
