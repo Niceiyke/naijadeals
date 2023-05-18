@@ -47,7 +47,7 @@ services:
     container_name: flower_container
     command: celery flower --persisten=True
     environment:
-     - CELERY_BROKER_URL=http://3.145.24.76:6379
+     - CELERY_BROKER_URL=redis://3.145.24.76:6379
      - FLOWER_PORT=8888
     ports:
       - 8888:8888 
