@@ -5,3 +5,4 @@ scrapyd
 db.sqlite3
 celerybeat-schedule.db
 .env
+.scrapy_volume

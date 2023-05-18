@@ -14,7 +14,7 @@ services:
   nginx:
     build: ./nginx
     ports:
-      - 8001:80
+      - 80:80
     depends_on:
       - web
     volumes:
@@ -26,7 +26,7 @@ services:
     command: celery -A priceFinder worker -l info  --pool=gevent -Ofair
     container_name: celery_Worker_container
     volumes:
-      - .scrapy_volume:/djangoapp/scrapy_data
+      - ./scrapy_volume:/djangoapp/scrapy_data
     depends_on:
       - web
     env_file:
