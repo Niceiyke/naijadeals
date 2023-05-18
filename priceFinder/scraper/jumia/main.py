@@ -2,6 +2,7 @@ import os
 from jumia.spiders.jumiaslaptops import jumiaLaptopSpyder
 from jumia.spiders.jumiasphones import jumiaPhoneSpyder
 from jumia.spiders.kongaphones import kongaPhoneSpyder
+from scrapy.crawler import CrawlerProcess
 from twisted.internet import reactor, defer
 from scrapy.crawler import CrawlerRunner
 from scrapy.utils.log import configure_logging
@@ -36,6 +37,16 @@ def scrapy():
             'DUPEFILTER_CLASS': 'scrapy_splash.SplashAwareDupeFilter',
             'HTTPCACHE_STORAGE': 'scrapy_splash.SplashAwareFSCacheStorage'
         }
+ 
+    process = CrawlerProcess(settings)
+    process.crawl(jumiaLaptopSpyder)
+    process.crawl(jumiaPhoneSpyder)
+    process.start()  # the script will block here until all crawling jobs are finished
+
+scrapy()
+
+
+""""
     configure_logging(settings)
     runner = CrawlerRunner(settings)
 
@@ -48,4 +59,4 @@ def scrapy():
     crawl()
     reactor.run() # the script will block here until the last crawl call is finished
 
-scrapy()
+"""

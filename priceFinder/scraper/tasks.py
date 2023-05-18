@@ -1,7 +1,7 @@
 from scraper.jumia.jumia.spiders.jumiaslaptops import jumiaLaptopSpyder
 from scraper.jumia.jumia.spiders.jumiasphones import jumiaPhoneSpyder
 from twisted.internet import reactor, defer
-from scrapy.crawler import CrawlerRunner
+from scrapy.crawler import CrawlerRunner,CrawlerProcess
 from scrapy.utils.log import configure_logging
 from twisted.internet import reactor, defer
 from scrapy.crawler import CrawlerRunner
@@ -28,16 +28,11 @@ def scrape():
         "DUPEFILTER_CLASS": "scrapy_splash.SplashAwareDupeFilter",
         "HTTPCACHE_STORAGE": "scrapy_splash.SplashAwareFSCacheStorage",
     }
-    configure_logging(settings)
-    runner = CrawlerRunner(settings)
-
-    @defer.inlineCallbacks
-    def crawl():
-        yield runner.crawl(jumiaLaptopSpyder)
-
-    crawl()
-    reactor.run()  # the script will block here until the last crawl call is finished
+    process = CrawlerProcess(settings)
+    process.crawl(jumiaLaptopSpyder)
+    process.crawl(jumiaPhoneSpyder)
+    process.start()
 
 
 scrape()
-reactor.stop()
+
