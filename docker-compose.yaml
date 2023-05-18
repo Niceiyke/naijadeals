@@ -45,7 +45,8 @@ services:
   flower:
     image: mher/flower
     container_name: flower_container
-    command: celery flower --persisten=True
+    command: celery flower
+    restart: always
     environment:
      - CELERY_BROKER_URL=redis://3.145.24.76:6379
      - FLOWER_PORT=8888
