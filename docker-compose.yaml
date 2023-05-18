@@ -23,7 +23,7 @@ services:
 
   celery_worker:
     build: .
-    command: celery -A priceFinder worker -l info --concurrency=2 --without-gossip --pool=solo
+    command: celery -A priceFinder worker -l info --pool=gevent
     container_name: celery_Worker_container
     volumes:
       - .scrapy_volume:/djangoapp/scrapy_data
