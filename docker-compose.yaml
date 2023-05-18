@@ -47,6 +47,8 @@ services:
     container_name: flower_container
     command: celery flower
     restart: always
+    depends_on:
+      - celery_worker
     environment:
      - CELERY_BROKER_URL=redis://3.145.24.76:6379
      - FLOWER_PORT=8888
