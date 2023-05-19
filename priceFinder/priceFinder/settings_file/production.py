@@ -26,17 +26,9 @@ CELERY_MAX_TASKS_PER_CHILD = 1
 CELERY_BEAT_SCHEDULE = {
     "scrape": {
         "task": "scraper.tasks.scrape",
-        "schedule": crontab(minute="*/5"),
-    },
-    "loadproducts": {
-        "task": "products.tasks.loadproducts",
-        "schedule": crontab(minute="*/25"),
+        "schedule": crontab(minute="*/10"),
     },
 
-    "deleteproducts": {
-        "task": "products.tasks.remover_no_stock_products",
-        "schedule": crontab(minute="*/27"),
-    },
 }
 
 

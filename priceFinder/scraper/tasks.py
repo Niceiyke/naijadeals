@@ -24,13 +24,12 @@ def scrape():
         "SPIDER_MIDDLEWARES": {
             "scrapy_splash.SplashDeduplicateArgsMiddleware": 100,
         },
-        "FEEDS": {"./scrapy_data/%(name)s.json": {"format": "json", "overwrite": True}},
+        "FEEDS": {"/scrapy_data/%(name)s.json": {"format": "json", "overwrite": True}},
         "DUPEFILTER_CLASS": "scrapy_splash.SplashAwareDupeFilter",
         "HTTPCACHE_STORAGE": "scrapy_splash.SplashAwareFSCacheStorage",
     }
     process = CrawlerProcess(settings)
     process.crawl(jumiaLaptopSpyder)
-    process.crawl(jumiaPhoneSpyder)
     process.start()
 
 
