@@ -28,9 +28,16 @@ def scrape():
         "DUPEFILTER_CLASS": "scrapy_splash.SplashAwareDupeFilter",
         "HTTPCACHE_STORAGE": "scrapy_splash.SplashAwareFSCacheStorage",
     }
-    process = CrawlerProcess(settings)
-    process.crawl(jumiaLaptopSpyder)
-    process.start()
+    runner = CrawlerRunner(settings)
+
+    @defer.inlineCallbacks
+    def crawl():
+
+        yield runner.crawl(jumiaLaptopSpyder)
+        reactor.stop()
+
+    crawl()
+    reactor.run() 
 
 
 scrape()
