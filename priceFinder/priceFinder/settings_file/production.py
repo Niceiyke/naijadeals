@@ -20,6 +20,7 @@ print('connected')
 
 CELERY_BROKER_URL = "amqp://admin:admin@3.145.24.76:5672/"
 CELERY_RESULT_BACKEND = "redis://3.145.24.76:6379"
+CELERY_MAX_TASKS_PER_CHILD = 1
 
 
 CELERY_BEAT_SCHEDULE = {
