@@ -22,29 +22,6 @@ services:
       - ./static_volume:/djangoapp/staticfiles/
     restart: always
 
-
-  celery_worker:
-    build: .
-    command: celery -A priceFinder worker -l info 
-    container_name: celery_Worker_container
-
-    depends_on:
-      - web
-    env_file:
-      - variable.env
-    restart: always
-
-  celery_beat:
-    build: .
-    command: celery -A priceFinder beat -l info
-    container_name: celery_beat_container
-    depends_on:
-      - web
-    env_file:
-      - variable.env
-    restart: always
-
-
 volumes:
   static_volume:
 

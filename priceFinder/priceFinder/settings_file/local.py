@@ -13,7 +13,7 @@ DATABASES = {
     }
 }
 
-
+"""
 CELERY_BROKER_URL = "redis://3.145.24.76:6379"
 CELERY_RESULT_BACKEND = "redis://3.145.24.76:6379"
 
@@ -32,7 +32,11 @@ CELERY_BEAT_SCHEDULE = {
         "task": "products.tasks.remover_no_stock_products",
         "schedule": crontab(minute="*/29"),
     },
-}
+    }
+
+"""
+
+
 
 
 

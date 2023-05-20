@@ -24,12 +24,14 @@ services:
 
   celery_worker:
     build: .
-    command: celery -A priceFinder worker -l info
+    command: celery -A priceFinder worker -l info 
     container_name: celery_Worker_container
+
     depends_on:
       - web
     env_file:
       - variable.env
+    restart: always
 
   celery_beat:
     build: .
@@ -39,6 +41,7 @@ services:
       - web
     env_file:
       - variable.env
+    restart: always
 
 
 volumes:
