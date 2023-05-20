@@ -4,12 +4,13 @@ services:
     build: .
     command: sh -c "gunicorn priceFinder.wsgi:application --bind 0.0.0.0:8000"
     volumes:
-      - /static_volume:/djangoapp/staticfiles/
+      - ./static_volume:/djangoapp/staticfiles/
     expose:
       - 8000
     container_name: pricefinder_container1
     env_file:
       - variable.env
+    restart: always
 
   nginx:
     build: ./nginx
@@ -18,15 +19,15 @@ services:
     depends_on:
       - web
     volumes:
-      - /static_volume:/djangoapp/staticfiles/
-      - /scrapy_volume:/djangoapp/scrapy_data
+      - ./static_volume:/djangoapp/staticfiles/
+    restart: always
+
 
   celery_worker:
     build: .
-    command: celery -A priceFinder worker -l info  -Ofair
+    command: celery -A priceFinder worker -l info 
     container_name: celery_Worker_container
-    volumes:
-      - /scrapy_volume:/djangoapp/scrapy_data
+
     depends_on:
       - web
     env_file:
@@ -41,9 +42,9 @@ services:
       - web
     env_file:
       - variable.env
+    restart: always
 
 
 volumes:
   static_volume:
-  scrapy_volume:
-  flower_data:
+
