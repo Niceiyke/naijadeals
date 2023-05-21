@@ -1,1 +1,1 @@
-# product-discount-finder
+# Naijadeals
